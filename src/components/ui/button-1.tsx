@@ -292,26 +292,7 @@ type LiquidHoverButtonProps = {
 export const LiquidHoverButton: React.FC<LiquidHoverButtonProps> = ({ children, className = '', onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className={`relative inline-block group dark:bg-black bg-white dark:border-white border-black border-2 rounded-full ${className}`}>
-      <div className="absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[19px] opacity-70">
-        <span className="absolute inset-0 rounded-full bg-[#d9d9d9] filter blur-[6.5px]"></span>
-        <div className="relative w-full h-full overflow-hidden rounded-full" style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}>
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0"
-              >
-                <Liquid isHovered={true} colors={COLORS} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[92.23%] h-[112.85%] rounded-full bg-[#010128] filter blur-[7.3px]"></div>
+    <div className={`relative inline-block group bg-black/40 backdrop-blur-md border border-white/10 rounded-full ${className}`}>
       <div className="relative w-full h-full overflow-hidden rounded-full" style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}>
         <span className="absolute inset-0 rounded-full bg-[#d9d9d9]"></span>
         <span className="absolute inset-0 rounded-full bg-black"></span>
