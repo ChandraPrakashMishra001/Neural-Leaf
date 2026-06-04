@@ -144,11 +144,12 @@ export default function BloomSenseFeatures() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: idx * 0.15, ease: "easeOut" }}
               style={{ transformPerspective: 1000 }}
-              className="group relative w-full p-6 md:p-8 overflow-hidden z-10 flex flex-col justify-center cursor-pointer transition-all duration-500
+              className="group relative w-full p-5 md:p-8 overflow-hidden z-10 flex flex-col justify-center cursor-pointer transition-all duration-500
                          bg-gradient-to-br from-white/10 to-white/[0.01] backdrop-blur-[24px] border border-white/20 rounded-[24px]
                          shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.3)]
                          hover:shadow-[0_20px_50px_rgba(34,197,94,0.15),inset_0_1px_2px_rgba(255,255,255,0.6)]
-                         hover:-translate-y-2 hover:scale-[1.02] hover:border-emerald-500/40"
+                         hover:-translate-y-2 hover:scale-[1.02] hover:border-emerald-500/40
+                         active:scale-[0.98] active:opacity-80 active:translate-y-0"
             >
               {/* Reflective Diagonal Shine */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 pointer-events-none transform -translate-x-full group-hover:translate-x-full z-0" style={{ transition: 'all 0.8s ease' }}></div>

@@ -220,7 +220,7 @@ function App() {
         
         {/* Mobile Hamburger Icon */}
         <div className="ml-auto lg:hidden z-50">
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2 focus:outline-none">
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2 focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center">
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -279,11 +279,11 @@ function App() {
               </div>
 
               {/* Main Content Area */}
-              <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white w-full max-w-6xl pt-20">
+              <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-6 text-center text-white w-full max-w-6xl pt-24 md:pt-20">
         
         {/* Main Quote with CSS Chrome Effect */}
         <motion.h1 
-          className="text-5xl md:text-8xl font-normal tracking-normal mb-2 text-chrome animate-chrome-shimmer py-4"
+          className="text-4xl sm:text-5xl md:text-8xl font-normal tracking-normal mb-2 text-chrome animate-chrome-shimmer py-4"
           style={{ fontFamily: "'Great Vibes', cursive", paddingBottom: "0.2em" }}
           initial={{ clipPath: 'inset(-20% 50% -20% 50%)', opacity: 0 }}
           animate={{ clipPath: 'inset(-20% -10% -20% -10%)', opacity: 1 }}
@@ -315,7 +315,7 @@ function App() {
 
         {/* Paragraph */}
         <motion.p 
-          className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: 'easeOut' }}
@@ -353,7 +353,7 @@ function App() {
           </motion.div>
 
           {/* Left Animated Text (Overlay) */}
-          <div className="absolute top-10 left-0 p-8 md:p-10 lg:pl-20 md:relative md:top-auto z-20 flex flex-col justify-start md:justify-center text-left w-full md:w-1/2 pointer-events-none">
+          <div className="absolute top-[5.5rem] left-0 p-5 md:p-10 lg:pl-20 md:relative md:top-auto z-20 flex flex-col justify-start md:justify-center text-left w-full md:w-1/2 pointer-events-none">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -362,7 +362,7 @@ function App() {
                 visible: { transition: { staggerChildren: 0.5, delayChildren: 0.6 } },
                 hidden: {}
               }}
-              className="space-y-12 pointer-events-auto"
+              className="space-y-4 md:space-y-12 pointer-events-auto"
             >
               {[
                 { title: 'Thinks.', desc: 'processes in real time' },
@@ -377,15 +377,15 @@ function App() {
                   }}
                   className="flex flex-col"
                 >
-                  <h3 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-300 to-neutral-600 mb-1 md:mb-2">{item.title}</h3>
-                  <p className="text-sm md:text-xl text-neutral-400 font-light uppercase tracking-[0.2em]">{item.desc}</p>
+                  <h3 className="text-3xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-300 to-neutral-600 mb-0.5 md:mb-2">{item.title}</h3>
+                  <p className="text-xs md:text-xl text-neutral-400 font-light uppercase tracking-[0.2em]">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           {/* Right Animated Text (Overlay) */}
-          <div className="absolute bottom-10 right-0 p-8 md:h-full md:bottom-auto md:p-10 lg:pr-20 z-20 flex flex-col justify-end md:justify-center items-end text-right w-full md:w-1/2 pointer-events-none">
+          <div className="absolute bottom-6 right-0 p-5 md:h-full md:bottom-auto md:p-10 lg:pr-20 z-20 flex flex-col justify-end md:justify-center items-end text-right w-full md:w-1/2 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -393,7 +393,7 @@ function App() {
               transition={{ duration: 1.2, delay: 1.0, ease: "easeOut" }}
               className="pointer-events-auto max-w-lg"
             >
-              <h2 className="text-3xl md:text-5xl font-extralight text-white leading-tight tracking-wide">
+              <h2 className="text-2xl md:text-5xl font-extralight text-white leading-tight tracking-wide">
                 <span className="opacity-70">Redefining the</span> <br className="hidden md:block" /> 
                 <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 to-neutral-500">boundaries of</span> <br/>
                 <div className="mt-3">
