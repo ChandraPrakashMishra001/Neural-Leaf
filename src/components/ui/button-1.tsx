@@ -296,19 +296,9 @@ export const LiquidHoverButton: React.FC<LiquidHoverButtonProps> = ({ children, 
       <div className="relative w-full h-full overflow-hidden rounded-full" style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}>
         <span className="absolute inset-0 rounded-full bg-[#d9d9d9]"></span>
         <span className="absolute inset-0 rounded-full bg-black"></span>
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
-              <Liquid isHovered={true} colors={COLORS} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className={`absolute inset-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-60'}`}>
+          <Liquid isHovered={isHovered} colors={COLORS} />
+        </div>
         {[1, 2, 3, 4, 5].map((i) => (
           <span
             key={i}
