@@ -270,7 +270,7 @@ function App() {
             className="w-full flex flex-col items-center"
           >
             {/* First Section: Main Page */}
-            <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+            <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
               {/* Background Shader Animation (restricted to first section) */}
               <div className="absolute inset-0 z-0 pointer-events-none">
                 <ShaderAnimation />
@@ -324,7 +324,7 @@ function App() {
       </section>
 
       {/* Second Section: 3D Interactive Hero with Aurora */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+      <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <AuroraBackground className="w-full h-full bg-black dark:bg-black" />
         </div>
