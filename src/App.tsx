@@ -37,6 +37,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth < 768) return;
+
     const lenis = new Lenis();
 
     function raf(time: number) {
@@ -325,7 +327,7 @@ function App() {
 
       {/* Second Section: 3D Interactive Hero with Aurora */}
       <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
           <AuroraBackground className="w-full h-full bg-black dark:bg-black" />
         </div>
         
