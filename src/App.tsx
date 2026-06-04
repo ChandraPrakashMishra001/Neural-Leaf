@@ -51,10 +51,10 @@ function App() {
     }
   }, []);
   return (
-    <div className="dark relative w-full min-h-screen overflow-x-hidden bg-black flex flex-col items-center">
+    <div className="dark relative w-full min-h-screen overflow-x-hidden bg-black">
       
       {/* Liquid Reflective Glass Navigation Bar */}
-      <nav className="absolute top-6 w-[98%] max-w-[1600px] h-20 rounded-full glass-liquid-nav z-20 flex items-center justify-start gap-16 px-10">
+      <nav className="absolute top-6 left-1/2 -translate-x-1/2 w-[98%] max-w-[1600px] h-20 rounded-full glass-liquid-nav z-20 flex items-center justify-start gap-16 px-10">
         {/* Logo Area */}
         <div 
           className="flex items-center h-full gap-3 relative cursor-pointer"
