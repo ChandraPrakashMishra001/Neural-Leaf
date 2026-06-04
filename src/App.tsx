@@ -274,7 +274,7 @@ function App() {
             {/* First Section: Main Page */}
             <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden">
               {/* Background Shader Animation (restricted to first section) */}
-              <div className="absolute -inset-[300px] z-0 pointer-events-none transform scale-[2] md:scale-[1.8]">
+              <div className="absolute -inset-[100px] z-0 pointer-events-none transform scale-150 md:scale-125">
                 <ShaderAnimation />
               </div>
 
