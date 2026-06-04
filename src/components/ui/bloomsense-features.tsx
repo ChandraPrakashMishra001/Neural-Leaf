@@ -15,7 +15,7 @@ export default function BloomSenseFeatures() {
   const titleY = useTransform(scrollYProgress, [0.3, 0.6], [0, -50]);
 
   return (
-    <div ref={containerRef} className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-32 flex flex-col items-center">
+    <div ref={containerRef} className="relative z-10 w-full max-w-[1200px] mx-auto px-4 md:px-6 py-16 md:py-32 flex flex-col items-center">
       
       {/* Top Title that vanishes on scroll */}
       <motion.div 
@@ -40,7 +40,7 @@ export default function BloomSenseFeatures() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ perspective: 1000 }}
-          className="w-full md:w-5/12 relative rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden group shadow-[0_32px_64px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:scale-[1.01]"
+          className="w-full md:w-5/12 relative rounded-[2.5rem] p-6 md:p-10 flex flex-col justify-between overflow-hidden group shadow-[0_32px_64px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:scale-[1.01]"
         >
           {/* Glass Base & Borders */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-black/20 backdrop-blur-3xl border border-white/20 group-hover:border-emerald-500/20 transition-all duration-500 z-0 rounded-[2.5rem] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.5)]"></div>
@@ -144,7 +144,7 @@ export default function BloomSenseFeatures() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: idx * 0.15, ease: "easeOut" }}
               style={{ transformPerspective: 1000 }}
-              className="group relative w-full p-8 overflow-hidden z-10 flex flex-col justify-center cursor-pointer transition-all duration-500
+              className="group relative w-full p-6 md:p-8 overflow-hidden z-10 flex flex-col justify-center cursor-pointer transition-all duration-500
                          bg-gradient-to-br from-white/10 to-white/[0.01] backdrop-blur-[24px] border border-white/20 rounded-[24px]
                          shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.3)]
                          hover:shadow-[0_20px_50px_rgba(34,197,94,0.15),inset_0_1px_2px_rgba(255,255,255,0.6)]

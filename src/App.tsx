@@ -12,13 +12,14 @@ import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import Lenis from 'lenis';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'farmer'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'farmer' | 'privacy' | 'terms'>('home');
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const [isAiMenuOpen, setIsAiMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const productMenuRef = useRef<HTMLDivElement>(null);
   const aiMenuRef = useRef<HTMLDivElement>(null);
 
@@ -214,7 +215,49 @@ function App() {
             </LiquidHoverButton>
           </a>
         </div>
+        
+        {/* Mobile Hamburger Icon */}
+        <div className="ml-auto lg:hidden z-50">
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2 focus:outline-none">
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center pt-24 pb-10 px-6 gap-10"
+          >
+            <a 
+              href="https://bloomsense.co.in" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-3xl font-light tracking-wide text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              BloomSense
+            </a>
+            <button 
+              onClick={() => { setCurrentPage('farmer'); setIsMobileMenuOpen(false); window.scrollTo(0,0); }} 
+              className="text-3xl font-light tracking-wide text-white"
+            >
+              AI Interfaces
+            </button>
+            <a 
+              href="mailto:mishrac373@gmail.com"
+              className="text-3xl font-light tracking-wide text-white mt-8"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence mode="wait">
         {currentPage === 'home' ? (
@@ -238,7 +281,7 @@ function App() {
         
         {/* Main Quote with CSS Chrome Effect */}
         <motion.h1 
-          className="text-6xl md:text-8xl font-normal tracking-normal mb-2 text-chrome animate-chrome-shimmer py-4"
+          className="text-5xl md:text-8xl font-normal tracking-normal mb-2 text-chrome animate-chrome-shimmer py-4"
           style={{ fontFamily: "'Great Vibes', cursive", paddingBottom: "0.2em" }}
           initial={{ clipPath: 'inset(-20% 50% -20% 50%)', opacity: 0 }}
           animate={{ clipPath: 'inset(-20% -10% -20% -10%)', opacity: 1 }}
@@ -308,7 +351,7 @@ function App() {
           </motion.div>
 
           {/* Left Animated Text (Overlay) */}
-          <div className="p-10 lg:pl-20 relative z-20 flex flex-col justify-center text-left w-full md:w-1/2 pointer-events-none">
+          <div className="absolute top-10 left-0 p-8 md:p-10 lg:pl-20 md:relative md:top-auto z-20 flex flex-col justify-start md:justify-center text-left w-full md:w-1/2 pointer-events-none">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -332,15 +375,15 @@ function App() {
                   }}
                   className="flex flex-col"
                 >
-                  <h3 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-300 to-neutral-600 mb-2">{item.title}</h3>
-                  <p className="text-lg md:text-xl text-neutral-400 font-light uppercase tracking-[0.2em]">{item.desc}</p>
+                  <h3 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-300 to-neutral-600 mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-sm md:text-xl text-neutral-400 font-light uppercase tracking-[0.2em]">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           {/* Right Animated Text (Overlay) */}
-          <div className="absolute right-0 h-full p-10 lg:pr-20 z-20 flex flex-col justify-center items-end text-right w-full md:w-1/2 pointer-events-none">
+          <div className="absolute bottom-10 right-0 p-8 md:h-full md:bottom-auto md:p-10 lg:pr-20 z-20 flex flex-col justify-end md:justify-center items-end text-right w-full md:w-1/2 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, x: 40, filter: 'blur(10px)' }}
               whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
@@ -348,8 +391,8 @@ function App() {
               transition={{ duration: 1.2, delay: 1.0, ease: "easeOut" }}
               className="pointer-events-auto max-w-lg"
             >
-              <h2 className="text-4xl md:text-5xl font-extralight text-white leading-tight tracking-wide">
-                <span className="opacity-70">Redefining the</span> <br/> 
+              <h2 className="text-3xl md:text-5xl font-extralight text-white leading-tight tracking-wide">
+                <span className="opacity-70">Redefining the</span> <br className="hidden md:block" /> 
                 <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 to-neutral-500">boundaries of</span> <br/>
                 <div className="mt-3">
                   <AnimatedTextCycle 

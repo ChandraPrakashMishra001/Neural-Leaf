@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function WhyChooseBloomSense() {
   return (
-    <section id="farmer-use-case" className="py-24 px-6 lg:px-12 max-w-[1400px] mx-auto bg-transparent relative z-10">
+    <section id="farmer-use-case" className="py-16 md:py-24 px-6 lg:px-12 max-w-[1400px] mx-auto bg-transparent relative z-10">
       {/* Header Container */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
         <div className="max-w-3xl">
@@ -32,7 +32,7 @@ export default function WhyChooseBloomSense() {
         
         {/* Card 1 */}
         <div className="flex flex-col">
-          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-8 overflow-hidden transition-all duration-300 group shadow-inner">
+          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-6 md:p-8 overflow-hidden transition-all duration-300 group shadow-inner">
             <img 
               src="/leaf_scanner_ui_mockup.png" 
               alt="Diagnostics and Verification Mockup"
@@ -49,7 +49,7 @@ export default function WhyChooseBloomSense() {
 
         {/* Card 2 */}
         <div className="flex flex-col">
-          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-8 overflow-hidden transition-all duration-300 group shadow-inner">
+          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-6 md:p-8 overflow-hidden transition-all duration-300 group shadow-inner">
             <img 
               src="/farm_alert_map_mockup.png" 
               alt="Hyperlocal Collaboration Mockup"
@@ -66,7 +66,7 @@ export default function WhyChooseBloomSense() {
 
         {/* Card 3 */}
         <div className="flex flex-col">
-          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-8 overflow-hidden transition-all duration-300 group shadow-inner">
+          <div className="relative aspect-[4/3] bg-gradient-to-b from-emerald-500/[0.03] to-emerald-500/[0.08] hover:from-emerald-500/[0.06] hover:to-emerald-500/[0.12] border border-emerald-900/30 rounded-[2.5rem] flex items-center justify-center p-6 md:p-8 overflow-hidden transition-all duration-300 group shadow-inner">
             <img 
               src="/crop_calendar_mockup.png" 
               alt="Weather to Calendar Insights Mockup"
