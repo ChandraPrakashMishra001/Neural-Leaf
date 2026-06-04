@@ -272,12 +272,10 @@ function App() {
             className="w-full flex flex-col items-center"
           >
             {/* First Section: Main Page */}
-            <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden pt-[104px]">
+            <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden">
               {/* Background Shader Animation (restricted to first section) */}
-              <div className="absolute top-[104px] left-0 right-0 bottom-0 z-0 pointer-events-none overflow-hidden">
-                <div className="absolute -inset-[100px] transform scale-150 md:scale-125">
-                  <ShaderAnimation />
-                </div>
+              <div className="absolute -inset-[100px] z-0 pointer-events-none transform scale-150 md:scale-125">
+                <ShaderAnimation />
               </div>
 
               {/* Main Content Area */}
