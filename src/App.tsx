@@ -304,7 +304,7 @@ function App() {
               background="transparent"
               minSize={0.4}
               maxSize={1}
-              particleDensity={200}
+              particleDensity={80}
               className="w-full h-full"
               particleColor="#FFFFFF"
             />
@@ -314,8 +314,8 @@ function App() {
         {/* Paragraph */}
         <motion.p 
           className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed"
-          initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: 'easeOut' }}
         >
           Neural Leaf is the central engine for next-generation intelligence. By bridging the gap between advanced neural architecture and real-world diagnostics, we power a connected network of specialized ecosystems—from precision agriculture and human health to real-time analytics. We don't just build software; we engineer platforms that grow.
@@ -370,8 +370,8 @@ function App() {
                 <motion.div
                   key={index}
                   variants={{
-                    hidden: { opacity: 0, x: -40, filter: 'blur(10px)' },
-                    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 1.2, ease: "easeOut" } }
+                    hidden: { opacity: 0, x: -40 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" } }
                   }}
                   className="flex flex-col"
                 >
@@ -385,8 +385,8 @@ function App() {
           {/* Right Animated Text (Overlay) */}
           <div className="absolute bottom-10 right-0 p-8 md:h-full md:bottom-auto md:p-10 lg:pr-20 z-20 flex flex-col justify-end md:justify-center items-end text-right w-full md:w-1/2 pointer-events-none">
             <motion.div
-              initial={{ opacity: 0, x: 40, filter: 'blur(10px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 1.2, delay: 1.0, ease: "easeOut" }}
               className="pointer-events-auto max-w-lg"
@@ -421,7 +421,7 @@ function App() {
             background="transparent"
             minSize={0.5}
             maxSize={1.5}
-            particleDensity={150}
+            particleDensity={60}
             className="w-full h-full"
             particleColor="#FFFFFF"
             isStatic={true}

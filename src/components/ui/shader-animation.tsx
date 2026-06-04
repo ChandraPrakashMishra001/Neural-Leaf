@@ -93,32 +93,39 @@ export function ShaderAnimation() {
     onWindowResize()
     window.addEventListener("resize", onWindowResize, false)
 
+    // Animation loop
+    const animate = () => {
+      if (!isIntersecting) {
+        if (sceneRef.current) sceneRef.current.animationId = 0
+        return
+      }
+      
+      const animationId = requestAnimationFrame(animate)
+      
+      uniforms.time.value += 0.08
+      renderer.render(scene, camera)
+
+      if (sceneRef.current) {
+        sceneRef.current.animationId = animationId
+      }
+    }
+
     // Add Intersection Observer to pause animation when out of view
     let isIntersecting = true
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const wasIntersecting = isIntersecting
           isIntersecting = entry.isIntersecting
+          if (!wasIntersecting && isIntersecting) {
+            animate()
+          }
         })
       },
       { threshold: 0 }
     )
     if (container) {
       observer.observe(container)
-    }
-
-    // Animation loop
-    const animate = () => {
-      const animationId = requestAnimationFrame(animate)
-      
-      if (isIntersecting) {
-        uniforms.time.value += 0.08
-        renderer.render(scene, camera)
-      }
-
-      if (sceneRef.current) {
-        sceneRef.current.animationId = animationId
-      }
     }
 
     // Store scene references for cleanup
