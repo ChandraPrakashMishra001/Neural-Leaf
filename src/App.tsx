@@ -274,7 +274,7 @@ function App() {
             {/* First Section: Main Page */}
             <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden">
               {/* Background Shader Animation (restricted to first section) */}
-              <div className="absolute inset-0 z-0 pointer-events-none">
+              <div className="absolute inset-0 z-0 pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
                 <ShaderAnimation />
               </div>
 
@@ -306,7 +306,7 @@ function App() {
               background="transparent"
               minSize={0.4}
               maxSize={1}
-              particleDensity={80}
+              particleDensity={40}
               className="w-full h-full"
               particleColor="#FFFFFF"
             />
@@ -327,7 +327,7 @@ function App() {
 
       {/* Second Section: 3D Interactive Hero with Aurora */}
       <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+        <div className="absolute inset-0 z-0 pointer-events-none hidden md:block" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
           <AuroraBackground className="w-full h-full bg-black dark:bg-black" />
         </div>
         
@@ -423,7 +423,7 @@ function App() {
             background="transparent"
             minSize={0.5}
             maxSize={1.5}
-            particleDensity={60}
+            particleDensity={25}
             className="w-full h-full"
             particleColor="#FFFFFF"
             isStatic={true}
@@ -452,7 +452,7 @@ function App() {
                 background="transparent"
                 minSize={0.5}
                 maxSize={1.5}
-                particleDensity={150}
+                particleDensity={50}
                 className="w-full h-full"
                 particleColor="#FFFFFF"
               />

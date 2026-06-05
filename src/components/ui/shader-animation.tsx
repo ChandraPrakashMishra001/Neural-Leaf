@@ -72,7 +72,7 @@ export function ShaderAnimation() {
     scene.add(mesh)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))
     renderer.domElement.style.display = "block"
     renderer.domElement.style.width = "100%"
     renderer.domElement.style.height = "100%"
@@ -93,15 +93,24 @@ export function ShaderAnimation() {
     onWindowResize()
     window.addEventListener("resize", onWindowResize, false)
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop — throttled to 30fps
+    let lastFrameTime = 0;
+    const TARGET_INTERVAL = 1000 / 30;
+
+    const animate = (currentTime: number) => {
       if (!isIntersecting) {
         if (sceneRef.current) sceneRef.current.animationId = 0
         return
       }
-      
+
       const animationId = requestAnimationFrame(animate)
-      
+
+      if (currentTime - lastFrameTime < TARGET_INTERVAL) {
+        if (sceneRef.current) sceneRef.current.animationId = animationId
+        return
+      }
+      lastFrameTime = currentTime
+
       uniforms.time.value += 0.08
       renderer.render(scene, camera)
 
@@ -138,7 +147,7 @@ export function ShaderAnimation() {
     }
 
     // Start animation
-    animate()
+    animate(0)
 
     // Cleanup function
     return () => {
@@ -166,6 +175,8 @@ export function ShaderAnimation() {
       style={{
         background: "#000",
         overflow: "hidden",
+        transform: "translateZ(0)",
+        willChange: "transform",
       }}
     />
   )
