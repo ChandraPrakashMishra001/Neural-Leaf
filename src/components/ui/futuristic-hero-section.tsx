@@ -31,7 +31,6 @@ export const AuroraHero = () => {
         backgroundImage,
       }}
       className="relative grid w-full min-h-screen place-content-center overflow-hidden bg-gray-950 px-4 py-24 text-gray-200"
-      style={{ willChange: 'background-image' }}
     >
       <div className="relative z-20 flex flex-col items-start px-6 md:px-24 w-full max-w-7xl mx-auto h-full justify-center pb-16 md:pb-32">
         <span className="mb-4 inline-block rounded-full bg-emerald-900/50 border border-emerald-500/30 px-4 py-1.5 text-sm font-medium tracking-wide text-emerald-200">
@@ -58,7 +57,7 @@ export const AuroraHero = () => {
           background="transparent"
           minSize={0.5}
           maxSize={1.5}
-          particleDensity={40}
+          particleDensity={150}
           className="w-full h-full"
           particleColor="#FFFFFF"
           isStatic={true}
