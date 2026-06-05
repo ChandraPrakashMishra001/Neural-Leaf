@@ -71,8 +71,8 @@ export function ShaderAnimation() {
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+    const renderer = new THREE.WebGLRenderer({ antialias: false })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))
     renderer.domElement.style.display = "block"
     renderer.domElement.style.width = "100%"
     renderer.domElement.style.height = "100%"
@@ -93,21 +93,24 @@ export function ShaderAnimation() {
     onWindowResize()
     window.addEventListener("resize", onWindowResize, false)
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop — throttled to 30fps to cut GPU load in half
+    let lastFrameTime = 0
+    const FRAME_INTERVAL = 1000 / 30
+
+    const animate = (currentTime: number) => {
       if (!isIntersecting) {
         if (sceneRef.current) sceneRef.current.animationId = 0
         return
       }
-      
+
       const animationId = requestAnimationFrame(animate)
-      
+      if (sceneRef.current) sceneRef.current.animationId = animationId
+
+      if (currentTime - lastFrameTime < FRAME_INTERVAL) return
+      lastFrameTime = currentTime
+
       uniforms.time.value += 0.08
       renderer.render(scene, camera)
-
-      if (sceneRef.current) {
-        sceneRef.current.animationId = animationId
-      }
     }
 
     // Add Intersection Observer to pause animation when out of view
@@ -118,7 +121,7 @@ export function ShaderAnimation() {
           const wasIntersecting = isIntersecting
           isIntersecting = entry.isIntersecting
           if (!wasIntersecting && isIntersecting) {
-            animate()
+            animate(0)
           }
         })
       },
@@ -138,7 +141,7 @@ export function ShaderAnimation() {
     }
 
     // Start animation
-    animate()
+    animate(0)
 
     // Cleanup function
     return () => {
