@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Leaf } from 'lucide-react';
+import { Leaf, ArrowUpRight } from 'lucide-react';
 import { ButtonColorful } from '@/components/ui/button-colorful';
 
 export default function BloomSenseFeatures() {
@@ -49,10 +49,42 @@ export default function BloomSenseFeatures() {
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 -translate-x-full group-hover:translate-x-full z-0 pointer-events-none rounded-[2.5rem]"></div>
           
           <div className="relative z-10">
-            {/* New Logo matching uploaded image */}
-            <div className="w-16 h-16 rounded-full bg-[#E8D9D9] flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(232,217,217,0.15)] border border-white/10">
-              <Leaf className="w-8 h-8 text-[#0a8c54]" strokeWidth={2.5} />
+            {/* Logo + Link row */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-16 h-16 rounded-full bg-[#E8D9D9] flex items-center justify-center shadow-[0_0_30px_rgba(232,217,217,0.15)] border border-white/10 flex-shrink-0">
+                <Leaf className="w-8 h-8 text-[#0a8c54]" strokeWidth={2.5} />
+              </div>
+
+              {/* Attractive hyperlink */}
+              <a
+                href="https://bloomsense.co.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full overflow-hidden
+                           border border-emerald-500/30 bg-emerald-950/40
+                           text-emerald-300 text-sm font-medium tracking-wide
+                           transition-all duration-300
+                           hover:border-emerald-400/60 hover:text-emerald-200
+                           hover:shadow-[0_0_20px_rgba(52,211,153,0.2)]"
+              >
+                {/* Shimmer sweep on hover */}
+                <span
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, rgba(52,211,153,0.15), transparent)',
+                  }}
+                />
+                <span className="relative z-10 flex items-center gap-1.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  </span>
+                  bloomsense.co.in
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </a>
             </div>
+
             
             <h3 className="text-3xl text-white font-medium mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               What is BloomSense?
