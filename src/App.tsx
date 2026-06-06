@@ -10,6 +10,7 @@ import BloomSenseFeatures from '@/components/ui/bloomsense-features';
 import { AuroraHero } from '@/components/ui/futuristic-hero-section';
 import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
+import XArmSection from '@/components/ui/x-arm-section';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -433,7 +434,10 @@ function App() {
         <BloomSenseFeatures />
       </section>
 
-      {/* Fourth Section: Aurora Hero Ending */}
+      {/* Fourth Section: x-ARM1.0 AI Interface */}
+      <XArmSection />
+
+      {/* Fifth Section: Aurora Hero Ending */}
       <AuroraHero />
           </motion.div>
         ) : currentPage === 'farmer' ? (

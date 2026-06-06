@@ -89,7 +89,22 @@
   }
 }
 
+@keyframes xarm-glitch {
+  0%   { transform: translate(0, 0)    skewX(0deg);    opacity: 1; }
+  15%  { transform: translate(-4px, 0) skewX(-3deg);   opacity: 0.85; }
+  30%  { transform: translate(4px, 0)  skewX(3deg);    opacity: 1; }
+  45%  { transform: translate(-2px, 1px) skewX(-1deg); opacity: 0.9; }
+  60%  { transform: translate(2px, -1px) skewX(2deg);  opacity: 1; }
+  75%  { transform: translate(-1px, 0) skewX(-1deg);   opacity: 0.95; }
+  100% { transform: translate(0, 0)    skewX(0deg);    opacity: 1; }
+}
+
+.xarm-glitch {
+  animation: xarm-glitch 0.4s steps(2) forwards;
+}
+
 @keyframes chrome-shimmer {
+
   0% {
     background-position: 0% center;
   }
