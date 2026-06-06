@@ -67,6 +67,11 @@
     pointer-events: none;
   }
 
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 100vh;
+  }
+
   .animate-spotlight {
     animation: spotlight 2s ease .75s 1 forwards;
   }

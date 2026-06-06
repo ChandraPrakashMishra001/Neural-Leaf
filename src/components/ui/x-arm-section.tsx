@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { SparklesCore } from './sparkles';
 import { useEffect, useState } from 'react';
+
 
 const TITLE_CHARS = ['x', '-', 'A', 'R', 'M', '1', '.', '0'];
 
@@ -19,27 +19,6 @@ export default function XArmSection() {
   return (
     <section className="relative w-full bg-black flex flex-col items-center overflow-hidden border-t border-white/5 pb-28">
 
-      {/* Same sparkle background as section 3 */}
-      <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
-        <SparklesCore
-          id="tsparticles-xarm"
-          background="transparent"
-          minSize={0.5}
-          maxSize={1.5}
-          particleDensity={60}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-          isStatic={true}
-        />
-      </div>
-
-      {/* Violet radial glow behind the title */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.18) 0%, transparent 70%)',
-        }}
-      />
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 pt-20 md:pt-28 flex flex-col items-center">
 

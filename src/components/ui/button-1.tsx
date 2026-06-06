@@ -169,8 +169,8 @@ const GradientSvg: React.FC<GradientSvgProps> = ({
       transition: { duration: 120, repeat: Infinity, ease: 'linear' },
     },
     notHovered: {
-      gradientTransform: gradientTransform,
-      transition: { duration: 40, repeat: Infinity, ease: 'linear' },
+      gradientTransform: gradientTransform[0],
+      transition: { duration: 0.6, ease: 'linear' },
     },
   };
 

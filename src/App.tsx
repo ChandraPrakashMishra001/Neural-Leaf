@@ -327,7 +327,7 @@ function App() {
       </section>
 
       {/* Second Section: 3D Interactive Hero with Aurora */}
-      <section className="relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+      <section className="cv-auto relative w-full h-[100dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
           <AuroraBackground className="w-full h-full bg-black dark:bg-black" />
         </div>
@@ -414,28 +414,30 @@ function App() {
         </div>
       </section>
 
-      {/* Third Section: Professional Black with Sparkling Crystals */}
-      <section className="relative w-full min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
-        
-        {/* Full-screen Sparkles Background */}
-        <div className="absolute inset-0 z-0 w-full h-full">
+      {/* Shared starfield backdrop for sections 3 & 4 — ONE canvas instead of two */}
+      <div className="cv-auto relative bg-black">
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <SparklesCore
-            id="tsparticles-section3"
+            id="tsparticles-shared"
             background="transparent"
             minSize={0.5}
             maxSize={1.5}
-            particleDensity={60}
+            particleDensity={50}
             className="w-full h-full"
             particleColor="#FFFFFF"
             isStatic={true}
           />
         </div>
 
-        <BloomSenseFeatures />
-      </section>
+        {/* Third Section: Professional Black with Sparkling Crystals */}
+        <section className="relative w-full min-h-screen bg-transparent flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
+          <BloomSenseFeatures />
+        </section>
 
-      {/* Fourth Section: x-ARM1.0 AI Interface */}
-      <XArmSection />
+        {/* Fourth Section: x-ARM1.0 AI Interface */}
+        <XArmSection />
+
+      </div>
 
       {/* Fifth Section: Aurora Hero Ending */}
       <AuroraHero />

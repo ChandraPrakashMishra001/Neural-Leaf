@@ -57,7 +57,7 @@ export const AuroraHero = () => {
           background="transparent"
           minSize={0.5}
           maxSize={1.5}
-          particleDensity={150}
+          particleDensity={50}
           className="w-full h-full"
           particleColor="#FFFFFF"
           isStatic={true}
