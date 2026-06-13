@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
-import { Maximize2, Minimize2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 
 const TITLE_CHARS = ['x', '-', 'A', 'R', 'M', '1', '.', '0'];
 
 export default function XArmSection() {
   const [glitch, setGlitch] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const iframeWrapperRef = useRef<HTMLDivElement>(null);
+
 
   // Glitch burst every 5 seconds
   useEffect(() => {
@@ -19,20 +17,7 @@ export default function XArmSection() {
     return () => clearInterval(id);
   }, []);
 
-  // Track fullscreen state changes (e.g. user presses Escape)
-  useEffect(() => {
-    const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
-    document.addEventListener('fullscreenchange', onFsChange);
-    return () => document.removeEventListener('fullscreenchange', onFsChange);
-  }, []);
 
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      iframeWrapperRef.current?.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  };
 
   return (
     <section className="relative w-full bg-black flex flex-col items-center overflow-hidden border-t border-white/5 pb-28">
@@ -145,40 +130,10 @@ export default function XArmSection() {
               backdropFilter: 'blur(8px)',
             }}
           >
-            {/* Fake browser chrome */}
-            <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/[0.07] bg-white/[0.02]">
-              <div className="flex gap-1.5">
-                <div className="h-3 w-3 rounded-full bg-white/15" />
-                <div className="h-3 w-3 rounded-full bg-white/15" />
-                <div className="h-3 w-3 rounded-full bg-white/15" />
-              </div>
-              <div className="flex-1 mx-3 h-6 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center gap-2 px-3">
-                <span className="h-2.5 w-2.5 rounded-full border border-violet-400/50 flex items-center justify-center">
-                  <span className="h-1 w-1 rounded-full bg-violet-400/60" />
-                </span>
-                <span className="text-[11px] text-white/25 font-mono tracking-wide">
-                  neural-leafv1.lovable.app
-                </span>
-              </div>
 
-              {/* Fullscreen toggle button */}
-              <button
-                onClick={toggleFullscreen}
-                title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
-                className="group flex items-center justify-center w-8 h-8 rounded-full
-                           border border-white/10 bg-white/[0.04]
-                           text-white/40 hover:text-violet-300 hover:border-violet-500/40
-                           hover:bg-violet-950/50 hover:shadow-[0_0_12px_rgba(139,92,246,0.3)]
-                           transition-all duration-200 flex-shrink-0"
-              >
-                {isFullscreen
-                  ? <Minimize2 className="w-3.5 h-3.5" />
-                  : <Maximize2 className="w-3.5 h-3.5" />}
-              </button>
-            </div>
 
             {/* The iframe */}
-            <div ref={iframeWrapperRef} className="w-full bg-black" style={{ height: '680px' }}>
+            <div className="w-full bg-black" style={{ height: '680px' }}>
               <iframe
                 src="https://neural-leafv1.lovable.app"
                 className="w-full h-full border-0 block"
