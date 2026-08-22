@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { downloadExtensionZip } from "@/utils/extensionDownloader";
 import { 
   Mic, MicOff, Eye, EyeOff, Sparkles, Terminal, CornerDownLeft, 
   RotateCcw, ShieldCheck, CheckCircle2, Globe, Laptop, ArrowRight,
@@ -554,9 +555,10 @@ export default function SlabExtensionSimulator() {
           </div>
 
           <a
-            href="/slab-agent-extension.zip"
-            download="slab-agent-extension.zip"
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold text-xs shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:shadow-[0_0_30px_rgba(56,189,248,0.7)] transition-all flex items-center gap-2"
+            href="/slab-extension.zip"
+            download="slab-extension.zip"
+            onClick={(e) => downloadExtensionZip('slab-extension.zip', e)}
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold text-xs shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:shadow-[0_0_30px_rgba(56,189,248,0.7)] transition-all flex items-center gap-2 cursor-pointer"
           >
             <span>⬇️ Export Verified Extension (.ZIP)</span>
           </a>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { downloadExtensionZip } from "@/utils/extensionDownloader";
 
 export default function SlabExtension() {
   return (
@@ -38,9 +39,10 @@ export default function SlabExtension() {
 
         <div className="shrink-0">
           <a
-            href="/slab-agent-extension.zip"
-            download="slab-agent-extension.zip"
-            className="px-8 py-5 bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 text-white font-black text-lg rounded-2xl shadow-[0_0_40px_rgba(56,189,248,0.6)] hover:scale-105 hover:shadow-[0_0_60px_rgba(56,189,248,0.9)] transition-all flex items-center gap-3 border border-white/30"
+            href="/slab-extension.zip"
+            download="slab-extension.zip"
+            onClick={(e) => downloadExtensionZip('slab-extension.zip', e)}
+            className="px-8 py-5 bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 text-white font-black text-lg rounded-2xl shadow-[0_0_40px_rgba(56,189,248,0.6)] hover:scale-105 hover:shadow-[0_0_60px_rgba(56,189,248,0.9)] transition-all flex items-center gap-3 border border-white/30 cursor-pointer"
           >
             <span>⬇️ Download Extension (.ZIP)</span>
           </a>

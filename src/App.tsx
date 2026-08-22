@@ -18,6 +18,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Lenis from 'lenis';
+import { downloadExtensionZip } from '@/utils/extensionDownloader';
 import logoImg from '@/assets/image.jpg';
 
 function App() {
@@ -171,10 +172,10 @@ function App() {
                   <div className="rounded-2xl border border-white/10 bg-black/80 backdrop-blur-2xl shadow-2xl overflow-hidden p-6 w-full">
                     <h4 className="text-[13px] text-gray-400 mb-4 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Products & Tools</h4>
                     <a 
-                      href="/slab-agent-extension.zip" 
-                      download="slab-agent-extension.zip" 
-                      className="flex items-center gap-4 group hover:bg-white/5 p-3 rounded-xl transition-colors border border-white/5 hover:border-sky-500/30"
-                      onClick={() => setIsProductMenuOpen(false)}
+                      href="/slab-extension.zip" 
+                      download="slab-extension.zip" 
+                      className="flex items-center gap-4 group hover:bg-white/5 p-3 rounded-xl transition-colors border border-white/5 hover:border-sky-500/30 cursor-pointer"
+                      onClick={(e) => { setIsProductMenuOpen(false); downloadExtensionZip('slab-extension.zip', e); }}
                     >
                       <div className="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-bold text-lg shadow-[0_0_15px_rgba(56,189,248,0.35)]">
                         ⬇️
@@ -263,10 +264,10 @@ function App() {
               Toolkit
             </button>
             <a 
-              href="/slab-agent-extension.zip" 
-              download="slab-agent-extension.zip" 
-              className="text-2xl font-light tracking-wide text-sky-400"
-              onClick={() => setIsMobileMenuOpen(false)}
+              href="/slab-extension.zip" 
+              download="slab-extension.zip" 
+              className="text-2xl font-light tracking-wide text-sky-400 cursor-pointer"
+              onClick={(e) => { setIsMobileMenuOpen(false); downloadExtensionZip('slab-extension.zip', e); }}
             >
               Chrome Extension (.ZIP)
             </a>
