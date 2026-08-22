@@ -171,7 +171,7 @@ function App() {
                   <div className="rounded-2xl border border-white/10 bg-black/80 backdrop-blur-2xl shadow-2xl overflow-hidden p-6 w-full">
                     <h4 className="text-[13px] text-gray-400 mb-4 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Products & Tools</h4>
                     <a 
-                      href="/slab-agent-extension.zip" 
+                      href="https://slab-webcmd-vssut.vercel.app/api/download" 
                       download="slab-agent-extension.zip" 
                       className="flex items-center gap-4 group hover:bg-white/5 p-3 rounded-xl transition-colors border border-white/5 hover:border-sky-500/30"
                       onClick={() => setIsProductMenuOpen(false)}
@@ -263,7 +263,7 @@ function App() {
               Toolkit
             </button>
             <a 
-              href="/slab-agent-extension.zip" 
+              href="https://slab-webcmd-vssut.vercel.app/api/download" 
               download="slab-agent-extension.zip" 
               className="text-2xl font-light tracking-wide text-sky-400"
               onClick={() => setIsMobileMenuOpen(false)}
