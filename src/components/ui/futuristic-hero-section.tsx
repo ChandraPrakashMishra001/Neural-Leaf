@@ -50,19 +50,6 @@ export const AuroraHero = () => {
           Neural
         </h1>
       </div>
-
-      <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
-        <SparklesCore
-          id="tsparticles-section4"
-          background="transparent"
-          minSize={0.5}
-          maxSize={1.5}
-          particleDensity={50}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-          isStatic={true}
-        />
-      </div>
     </motion.section>
   );
 };
