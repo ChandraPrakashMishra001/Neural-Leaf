@@ -187,9 +187,16 @@ function App() {
           </div>
         </div>
 
-        <div className="ml-auto hidden lg:block z-50">
+        <div className="ml-auto hidden lg:flex items-center gap-4 z-50">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-cyan-500/30 text-xs text-gray-200 backdrop-blur-md shadow-[0_0_15px_rgba(56,189,248,0.15)] font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="font-bold text-white tracking-wide">IEEE VSSUT SB</span>
+            <span className="text-cyan-400 font-semibold">×</span>
+            <span className="font-bold text-sky-300">webcmd</span>
+          </div>
+
           <a href="mailto:mishrac373@gmail.com">
-            <LiquidHoverButton className="h-10 min-w-[120px]">
+            <LiquidHoverButton className="h-10 min-w-[110px]">
               Contact
             </LiquidHoverButton>
           </a>
@@ -494,7 +501,7 @@ function App() {
             <span className="font-bold">Neural</span> <span className="font-light text-cyan-400">Agent</span>
           </span>
         </div>
-        <p className="text-sm font-light">© 2026 SLAB Webcmd VSSUT. Autonomous AI Browser Agents.</p>
+        <p className="text-sm font-light">© 2026 IEEE VSSUT SB × webcmd (Host). Autonomous AI Browser Agents.</p>
         <div className="flex gap-6 mt-4 text-xs tracking-wider uppercase">
           <button onClick={() => { setCurrentPage('privacy'); window.scrollTo(0,0); }} className="hover:text-white transition-colors uppercase tracking-wider">Privacy Policy</button>
           <button onClick={() => { setCurrentPage('terms'); window.scrollTo(0,0); }} className="hover:text-white transition-colors uppercase tracking-wider">Terms of Service</button>
