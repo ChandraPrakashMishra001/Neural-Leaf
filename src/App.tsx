@@ -6,7 +6,6 @@ import { LiquidHoverButton } from '@/components/ui/button-1';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle';
 import { AuroraHero } from '@/components/ui/futuristic-hero-section';
-import SlabProblem from '@/components/ui/slab-problem';
 import SlabArchitecture from '@/components/ui/slab-architecture';
 import SlabVoiceAgent from '@/components/ui/slab-voice-agent';
 import SlabToolkit from '@/components/ui/slab-toolkit';
@@ -92,18 +91,6 @@ function App() {
             Home
           </button>
           
-          <button 
-            onClick={() => {
-              const el = document.getElementById('problem-section') || document.getElementById('about');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-              else window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
-            }}
-            className="text-[16px] font-semibold text-white/80 hover:text-white transition-colors tracking-tight"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            Problem
-          </button>
-
           <button 
             onClick={() => {
               const el = document.getElementById('loop-section') || document.getElementById('architecture');
@@ -224,12 +211,6 @@ function App() {
               className="text-2xl font-light tracking-wide text-white"
             >
               Home
-            </button>
-            <button 
-              onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' }); }}
-              className="text-2xl font-light tracking-wide text-white"
-            >
-              Problem
             </button>
             <button 
               onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 1.6, behavior: 'smooth' }); }}
@@ -439,34 +420,31 @@ function App() {
         </div>
       </section>
 
-      {/* SLAB Sections 3, 4, 5, 6, 7 with Cosmic Starfield Backdrop */}
-      <div className="cv-auto relative bg-black">
+      {/* SLAB Sections: Architecture, Voice Agent, Toolkit, Extension with Full-Space Starfield */}
+      <div className="w-full relative bg-black overflow-hidden py-10">
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <SparklesCore
-            id="tsparticles-sections-3-7"
+            id="tsparticles-slab-full"
             background="transparent"
-            minSize={0.5}
-            maxSize={1.8}
-            particleDensity={60}
-            className="w-full h-full"
+            minSize={0.6}
+            maxSize={2.2}
+            particleDensity={160}
+            className="w-full h-full min-h-full"
             particleColor="#FFFFFF"
-            isStatic={true}
+            speed={2}
           />
         </div>
 
-        {/* Section 3: Problem Statement */}
-        <SlabProblem />
-
-        {/* Section 4: 4-Layer Architecture */}
+        {/* 4-Layer Architecture */}
         <SlabArchitecture />
 
-        {/* Section 5: Live Voice Browser Agent Arena */}
+        {/* Live Voice Browser Agent Arena */}
         <SlabVoiceAgent />
 
-        {/* Section 6: Developer Toolkit */}
+        {/* Developer Toolkit */}
         <SlabToolkit />
 
-        {/* Section 7: Chrome Extension & MCP */}
+        {/* Chrome Extension & MCP */}
         <SlabExtension />
       </div>
 

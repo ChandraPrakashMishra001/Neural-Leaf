@@ -215,8 +215,8 @@ export const SparklesCore = (props: ParticlesProps) => {
               number: {
                 density: {
                   enable: true,
-                  width: 400,
-                  height: 400,
+                  width: 1920,
+                  height: 1080,
                 },
                 limit: {
                   mode: "delete",
