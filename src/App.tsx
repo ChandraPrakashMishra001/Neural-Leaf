@@ -53,19 +53,6 @@ function App() {
 
   return (
     <div className="dark relative w-full min-h-screen overflow-x-hidden bg-black">
-      {/* Full-Screen Continuous Starfield Backdrop covering the entire website */}
-      <div className="fixed inset-0 z-0 w-full h-full pointer-events-none">
-        <SparklesCore
-          id="tsparticles-global-full"
-          background="transparent"
-          minSize={0.6}
-          maxSize={2.0}
-          particleDensity={85}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-      
       {/* Liquid Reflective Glass Navigation Bar */}
       <nav className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1600px] h-20 glass-liquid-nav z-20 flex items-center justify-start gap-16 px-10 rounded-b-3xl">
         {/* Logo Area */}
@@ -426,8 +413,21 @@ function App() {
         </div>
       </section>
 
-      {/* SLAB Sections 3, 4, 5, 6, 7 */}
-      <div className="cv-auto relative bg-transparent">
+      {/* SLAB Sections 3, 4, 5, 6, 7 with Cosmic Starfield Backdrop */}
+      <div className="cv-auto relative bg-black">
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+          <SparklesCore
+            id="tsparticles-sections-3-7"
+            background="transparent"
+            minSize={0.5}
+            maxSize={1.8}
+            particleDensity={60}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+            isStatic={true}
+          />
+        </div>
+
         {/* Section 3: Problem Statement */}
         <SlabProblem />
 
