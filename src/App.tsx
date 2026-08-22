@@ -7,6 +7,7 @@ import { AuroraBackground } from '@/components/ui/aurora-background';
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle';
 import { AuroraHero } from '@/components/ui/futuristic-hero-section';
 import SlabArchitecture from '@/components/ui/slab-architecture';
+import NeuralAiPreview from '@/components/ui/neural-ai-preview';
 import SlabVoiceAgent from '@/components/ui/slab-voice-agent';
 import SlabToolkit from '@/components/ui/slab-toolkit';
 import SlabExtension from '@/components/ui/slab-extension';
@@ -101,6 +102,18 @@ function App() {
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             4-Layer Loop
+          </button>
+
+          <button 
+            onClick={() => {
+              const el = document.getElementById('ai-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollTo({ top: window.innerHeight * 2.2, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-cyan-300 hover:text-cyan-200 transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            x-ARM AI
           </button>
 
           <button 
@@ -217,6 +230,17 @@ function App() {
               className="text-2xl font-light tracking-wide text-white"
             >
               4-Layer Loop
+            </button>
+            <button 
+              onClick={() => { 
+                setIsMobileMenuOpen(false); 
+                const el = document.getElementById('ai-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                else window.scrollTo({ top: window.innerHeight * 2.2, behavior: 'smooth' }); 
+              }}
+              className="text-2xl font-light tracking-wide text-cyan-400"
+            >
+              x-ARM AI
             </button>
             <button 
               onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 2.4, behavior: 'smooth' }); }}
@@ -437,6 +461,9 @@ function App() {
 
         {/* 4-Layer Architecture */}
         <SlabArchitecture />
+
+        {/* 4th Section: x-ARM 1.0 AI */}
+        <NeuralAiPreview />
 
         {/* Live Voice Browser Agent Arena */}
         <SlabVoiceAgent />

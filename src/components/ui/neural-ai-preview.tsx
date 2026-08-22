@@ -1,0 +1,103 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { ExternalLink, Maximize2, Minimize2, Sparkles, Cpu } from "lucide-react";
+
+export default function NeuralAiPreview() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const appUrl = "https://neural-leafv1.lovable.app";
+
+  return (
+    <section id="ai-section" className="relative w-full max-w-7xl mx-auto px-6 py-28 z-10 border-t border-white/5">
+      <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono mb-3 shadow-[0_0_20px_rgba(56,189,248,0.2)]"
+        >
+          <Cpu size={14} className="animate-spin text-cyan-400" />
+          <span className="font-bold tracking-widest uppercase">Live Neural Agent</span>
+        </motion.div>
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-3xl sm:text-5xl font-black tracking-tight text-white mt-2"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        >
+          x-ARM 1.0 — Futuristic AI
+        </motion.h2>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mt-3"
+        >
+          Direct conversational intelligence and autonomous execution powered by Neural Core.
+        </motion.p>
+      </div>
+
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.97 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className={`rounded-3xl border border-cyan-500/40 bg-gradient-to-b from-slate-900/90 via-black/95 to-slate-950/95 backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.95),0_0_50px_rgba(56,189,248,0.25)] overflow-hidden transition-all duration-500 ${
+          isExpanded ? "fixed inset-4 z-50 rounded-2xl" : "relative w-full h-[720px] md:h-[820px]"
+        }`}
+      >
+        {/* Frame Top Header */}
+        <div className="w-full h-14 bg-slate-950/90 border-b border-white/10 px-4 sm:px-6 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span className="text-xs font-mono text-gray-400 ml-2 hidden sm:inline-block">
+              neural-leafv1.lovable.app
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-xs text-cyan-300 font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>x-ARM 1.0 ONLINE</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-cyan-400 transition-all text-xs flex items-center gap-1"
+              title={isExpanded ? "Minimize" : "Expand"}
+            >
+              {isExpanded ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+              <span className="hidden sm:inline">{isExpanded ? "Minimize" : "Full Space"}</span>
+            </button>
+            <a
+              href={appUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all flex items-center gap-1.5"
+            >
+              <span>Open App</span>
+              <ExternalLink size={12} />
+            </a>
+          </div>
+        </div>
+
+        {/* Live App Frame */}
+        <div className="w-full h-[calc(100%-3.5rem)] relative bg-black">
+          <iframe
+            src={appUrl}
+            title="x-ARM 1.0 AI"
+            className="w-full h-full border-0"
+            allow="camera; microphone; clipboard-write; autoplay; fullscreen"
+            loading="lazy"
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
