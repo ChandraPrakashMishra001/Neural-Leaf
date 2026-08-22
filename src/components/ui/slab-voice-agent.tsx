@@ -134,11 +134,14 @@ export default function SlabVoiceAgent() {
     // Client-side fallback handler
     const lower = query.toLowerCase();
 
-    if (lower.startsWith("open ") || lower.startsWith("go to ") || lower.startsWith("visit ")) {
+    if (lower.startsWith("open ") || lower.startsWith("go to ") || lower.startsWith("visit ") || lower === "instagram" || lower === "ig" || lower === "flipkart" || lower === "amazon" || lower === "youtube") {
       let targetUrl = "https://www.google.com";
       let siteName = "Web Page";
 
-      if (lower.includes("flipkart")) {
+      if (lower.includes("instagram") || lower.includes("ig") || lower.includes("insta")) {
+        targetUrl = "https://www.instagram.com";
+        siteName = "Instagram";
+      } else if (lower.includes("flipkart")) {
         targetUrl = "https://www.flipkart.com";
         siteName = "Flipkart";
       } else if (lower.includes("amazon")) {
@@ -150,6 +153,19 @@ export default function SlabVoiceAgent() {
       } else if (lower.includes("github")) {
         targetUrl = "https://github.com";
         siteName = "GitHub";
+      } else if (lower.includes("twitter") || lower.includes(" x ") || lower.endsWith(" x")) {
+        targetUrl = "https://x.com";
+        siteName = "X / Twitter";
+      } else if (lower.includes("linkedin")) {
+        targetUrl = "https://www.linkedin.com";
+        siteName = "LinkedIn";
+      } else if (lower.includes("reddit")) {
+        targetUrl = "https://www.reddit.com";
+        siteName = "Reddit";
+      } else {
+        const clean = lower.replace(/^(open|go to|visit)\s+/i, '').trim();
+        targetUrl = clean.includes('.') ? `https://${clean}` : `https://www.${clean}.com`;
+        siteName = clean.toUpperCase();
       }
 
       const agentReply: Message = {
@@ -238,7 +254,7 @@ export default function SlabVoiceAgent() {
     speakText("Action executed with deterministic 98% token reduction.");
   };
 
-  const toggleSpeech = () => {
+  const toggleSpeech = async () => {
     const SpeechAPI = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechAPI) {
       alert("Speech Recognition is not supported on this browser.");
@@ -246,23 +262,69 @@ export default function SlabVoiceAgent() {
     }
 
     if (isRecording) {
-      if (recognitionRef.current) recognitionRef.current.stop();
+      if (recognitionRef.current) {
+        try { recognitionRef.current.stop(); } catch (e) {}
+      }
       setIsRecording(false);
-    } else {
-      const rec = new SpeechAPI();
-      rec.continuous = false;
-      rec.interimResults = false;
-      rec.lang = "en-US";
+      return;
+    }
 
-      rec.onstart = () => setIsRecording(true);
-      rec.onresult = (e: any) => {
-        const transcript = e.results[0][0].transcript;
-        setInputText(transcript);
-        handleSend(transcript);
-      };
-      rec.onend = () => setIsRecording(false);
-      recognitionRef.current = rec;
+    // Pre-flight microphone permission
+    try {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach(t => t.stop());
+      }
+    } catch (err: any) {
+      console.warn("Microphone access denied:", err);
+      alert("Please allow microphone access in your browser to speak commands.");
+      return;
+    }
+
+    const rec = new SpeechAPI();
+    rec.continuous = false;
+    rec.interimResults = true;
+    rec.lang = "en-US";
+
+    rec.onstart = () => {
+      setIsRecording(true);
+    };
+
+    rec.onresult = (e: any) => {
+      let interim = '';
+      let final = '';
+      for (let i = e.resultIndex; i < e.results.length; ++i) {
+        if (e.results[i].isFinal) {
+          final += e.results[i][0].transcript;
+        } else {
+          interim += e.results[i][0].transcript;
+        }
+      }
+      const transcriptText = final || interim;
+      setInputText(transcriptText);
+
+      if (final.trim()) {
+        handleSend(final.trim());
+      }
+    };
+
+    rec.onerror = (err: any) => {
+      console.warn("[SLAB Voice Arena Error]", err.error);
+      setIsRecording(false);
+      if (err.error === 'not-allowed') {
+        alert("Microphone permission was denied. Please allow microphone access.");
+      }
+    };
+
+    rec.onend = () => {
+      setIsRecording(false);
+    };
+
+    recognitionRef.current = rec;
+    try {
       rec.start();
+    } catch (e) {
+      console.warn("Speech start error:", e);
     }
   };
 
