@@ -17,6 +17,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Lenis from 'lenis';
+import logoImg from '@/assets/logo.jpeg';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'farmer' | 'privacy' | 'terms'>('home');
@@ -63,10 +64,10 @@ function App() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <div className="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center shadow-md relative z-10">
+          <div className="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center shadow-lg relative z-10 border border-white/20 bg-white/5">
             <img 
-              src="/images.jpeg" 
-              alt="Neural Leaf Logo" 
+              src={logoImg} 
+              alt="Neural Logo" 
               className="h-full w-full object-cover"
             />
           </div>
@@ -468,8 +469,8 @@ function App() {
       {/* Footer */}
       <footer className="w-full bg-[#020617] border-t border-white/10 py-8 flex flex-col items-center justify-center text-neutral-400">
         <div className="flex items-center gap-3 mb-4">
-          <div className="h-8 w-8 rounded-full overflow-hidden flex items-center justify-center">
-            <img src="/images.jpeg" alt="Logo" className="h-full w-full object-cover" />
+          <div className="h-9 w-9 rounded-full overflow-hidden flex items-center justify-center shadow-md border border-white/20 bg-white/5">
+            <img src={logoImg} alt="Neural Logo" className="h-full w-full object-cover" />
           </div>
           <span className="text-xl tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <span className="font-bold">Neural</span> <span className="font-light text-cyan-400">Agent</span>
