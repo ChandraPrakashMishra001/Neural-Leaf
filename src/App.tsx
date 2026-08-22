@@ -11,6 +11,7 @@ import NeuralAiPreview from '@/components/ui/neural-ai-preview';
 import SlabVoiceAgent from '@/components/ui/slab-voice-agent';
 import SlabToolkit from '@/components/ui/slab-toolkit';
 import SlabExtension from '@/components/ui/slab-extension';
+import SlabExtensionSimulator from '@/components/ui/slab-extension-simulator';
 import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -478,7 +479,10 @@ function App() {
         {/* Developer Toolkit */}
         <SlabToolkit />
 
-        {/* Chrome Extension & MCP */}
+        {/* Local Interactive Extension Simulator & Testbed */}
+        <SlabExtensionSimulator />
+
+        {/* Chrome Extension Setup & Download */}
         <SlabExtension />
       </div>
 
