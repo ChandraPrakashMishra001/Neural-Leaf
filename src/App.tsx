@@ -17,7 +17,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Lenis from 'lenis';
-import logoImg from '@/assets/logo.jpeg';
+import logoImg from '@/assets/image.jpg';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'farmer' | 'privacy' | 'terms'>('home');
