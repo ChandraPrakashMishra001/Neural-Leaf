@@ -34,7 +34,7 @@ export const AuroraHero = () => {
     >
       <div className="relative z-20 flex flex-col items-start px-6 md:px-24 w-full max-w-7xl mx-auto h-full justify-center pb-16 md:pb-32">
         <span className="mb-4 inline-block rounded-full bg-emerald-900/50 border border-emerald-500/30 px-4 py-1.5 text-sm font-medium tracking-wide text-emerald-200">
-          The Neural Leaf Network
+          The Neural Network
         </span>
         <h1 className="max-w-4xl bg-gradient-to-br from-white to-neutral-400 bg-clip-text text-left text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight pb-2">
           One Core. Endless Growth.
@@ -47,7 +47,7 @@ export const AuroraHero = () => {
           className="text-[20vw] font-medium tracking-[-0.06em] text-white leading-[0.8] select-none opacity-90"
           style={{ fontFamily: "'Inter', sans-serif, system-ui" }}
         >
-          Neural leaf
+          Neural
         </h1>
       </div>
 

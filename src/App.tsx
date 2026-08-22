@@ -5,12 +5,14 @@ import { Spotlight } from '@/components/ui/spotlight';
 import { LiquidHoverButton } from '@/components/ui/button-1';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle';
-import WhyChooseBloomSense from '@/components/ui/why-choose-bloomsense';
-import BloomSenseFeatures from '@/components/ui/bloomsense-features';
 import { AuroraHero } from '@/components/ui/futuristic-hero-section';
+import SlabProblem from '@/components/ui/slab-problem';
+import SlabArchitecture from '@/components/ui/slab-architecture';
+import SlabVoiceAgent from '@/components/ui/slab-voice-agent';
+import SlabToolkit from '@/components/ui/slab-toolkit';
+import SlabExtension from '@/components/ui/slab-extension';
 import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
-import XArmSection from '@/components/ui/x-arm-section';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -19,18 +21,13 @@ import Lenis from 'lenis';
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'farmer' | 'privacy' | 'terms'>('home');
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
-  const [isAiMenuOpen, setIsAiMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const productMenuRef = useRef<HTMLDivElement>(null);
-  const aiMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (productMenuRef.current && !productMenuRef.current.contains(event.target as Node)) {
         setIsProductMenuOpen(false);
-      }
-      if (aiMenuRef.current && !aiMenuRef.current.contains(event.target as Node)) {
-        setIsAiMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -74,24 +71,82 @@ function App() {
             />
           </div>
           <span 
-            className="text-[22px] tracking-tight text-white relative z-10"
+            className="text-[24px] tracking-tight text-white relative z-10"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            <span className="font-semibold">Neural</span> <span className="font-light">Leaf</span>
+            <span className="font-bold tracking-tight">Neural</span>
           </span>
         </div>
         
-        {/* Right side Buttons */}
-        <div className="hidden lg:flex items-center gap-6 mr-0 z-50">
+        {/* Navigation Links from user design */}
+        <div className="hidden lg:flex items-center gap-8 ml-4 z-50">
+          <button 
+            onClick={() => {
+              setCurrentPage('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-white/90 hover:text-white transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Home
+          </button>
+          
+          <button 
+            onClick={() => {
+              const el = document.getElementById('problem-section') || document.getElementById('about');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-white/80 hover:text-white transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Problem
+          </button>
+
+          <button 
+            onClick={() => {
+              const el = document.getElementById('loop-section') || document.getElementById('architecture');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollTo({ top: window.innerHeight * 1.6, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-white/80 hover:text-white transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            4-Layer Loop
+          </button>
+
+          <button 
+            onClick={() => {
+              const el = document.getElementById('voice-section') || document.getElementById('agent-demo');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollTo({ top: window.innerHeight * 2.4, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-white/80 hover:text-white transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Voice Agent
+          </button>
+
+          <button 
+            onClick={() => {
+              const el = document.getElementById('toolkit-section') || document.getElementById('toolkit');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollTo({ top: window.innerHeight * 3.2, behavior: 'smooth' });
+            }}
+            className="text-[16px] font-semibold text-white/80 hover:text-white transition-colors tracking-tight"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Toolkit
+          </button>
+
+          {/* Product Dropdown for Chrome Extension */}
           <div 
-            className="relative" 
+            className="relative ml-2" 
             ref={productMenuRef}
             onMouseEnter={() => setIsProductMenuOpen(true)}
             onMouseLeave={() => setIsProductMenuOpen(false)}
           >
-            <LiquidHoverButton 
-              className="h-10 min-w-[120px]" 
-            >
+            <LiquidHoverButton className="h-10 min-w-[120px]">
               Product
               <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-300 ${isProductMenuOpen ? '-rotate-180' : 'rotate-0'}`} />
             </LiquidHoverButton>
@@ -102,108 +157,28 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 pt-4 w-[600px] z-50"
+                  className="absolute top-full left-0 pt-4 w-[480px] z-50"
                 >
-                  <div className="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full h-full">
-                  {/* Left Column */}
-                  <div className="w-full md:w-5/12 p-8 border-b md:border-b-0 md:border-r border-white/10 bg-white/[0.02]">
-                    <h3 
-                      className="text-2xl font-normal text-white leading-snug"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  <div className="rounded-2xl border border-white/10 bg-black/80 backdrop-blur-2xl shadow-2xl overflow-hidden p-6 w-full">
+                    <h4 className="text-[13px] text-gray-400 mb-4 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Products & Tools</h4>
+                    <a 
+                      href="/slab-agent-extension.zip" 
+                      download="slab-agent-extension.zip" 
+                      className="flex items-center gap-4 group hover:bg-white/5 p-3 rounded-xl transition-colors border border-white/5 hover:border-sky-500/30"
+                      onClick={() => setIsProductMenuOpen(false)}
                     >
-                      Explore our next<br/>generation products
-                    </h3>
-                  </div>
-
-                  {/* Right Column */}
-                  <div className="w-full md:w-7/12 py-8 px-10">
-                    <h4 className="text-[14px] text-gray-400 mb-6 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Products</h4>
-                    <div className="flex flex-col gap-4">
-                      <a 
-                        href="https://bloomsense.co.in" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-4 group hover:bg-white/5 -ml-4 p-4 rounded-xl transition-colors"
-                        onClick={() => setIsProductMenuOpen(false)}
-                      >
-                        <svg viewBox="0 0 24 24" fill="#C0C0C0" className="w-5 h-5 opacity-90" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 2C7.5 2 2 7 2 13c0 4.5 3 6.5 5.5 8.5C9 23 12 24 12 24s3-1 4.5-2.5C19 19.5 22 17.5 22 13 22 7 16.5 2 12 2z" />
-                        </svg>
-                        <div className="flex flex-col">
-                          <span 
-                            className="text-base font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-gray-400 to-slate-300 leading-tight"
-                          >
-                            BloomSense
-                          </span>
-                          <span className="text-[10px] text-gray-400 tracking-[0.1em] uppercase font-medium mt-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                            (Agricultural AI)
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <div 
-            className="relative" 
-            ref={aiMenuRef}
-            onMouseEnter={() => setIsAiMenuOpen(true)}
-            onMouseLeave={() => setIsAiMenuOpen(false)}
-          >
-            <LiquidHoverButton className="h-10 min-w-[140px]">
-              AI Interfaces
-              <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-300 ${isAiMenuOpen ? '-rotate-180' : 'rotate-0'}`} />
-            </LiquidHoverButton>
-            <AnimatePresence>
-              {isAiMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 pt-4 w-[600px] z-50"
-                >
-                  <div className="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full h-full">
-                    {/* Left Column */}
-                  <div className="w-full md:w-5/12 p-8 border-b md:border-b-0 md:border-r border-white/10 bg-white/[0.02]">
-                    <h3 
-                      className="text-2xl font-normal text-white leading-snug"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      Experience<br/>specialized intelligence
-                    </h3>
-                  </div>
-
-                  {/* Right Column */}
-                  <div className="w-full md:w-7/12 py-8 px-10">
-                    <h4 className="text-[14px] text-gray-400 mb-6 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>AI Interfaces</h4>
-                    <div className="flex flex-col gap-4">
-                      <a 
-                        href="https://cpmishra.lovable.app" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-4 group hover:bg-white/5 -ml-4 p-4 rounded-xl transition-colors"
-                        onClick={() => setIsAiMenuOpen(false)}
-                      >
-                        <svg viewBox="0 0 24 24" fill="#C0C0C0" className="w-5 h-5 opacity-90" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 2C7.5 2 2 7 2 13c0 4.5 3 6.5 5.5 8.5C9 23 12 24 12 24s3-1 4.5-2.5C19 19.5 22 17.5 22 13 22 7 16.5 2 12 2z" />
-                        </svg>
-                        <div className="flex flex-col">
-                          <span 
-                            className="text-base font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-gray-400 to-slate-300 leading-tight"
-                          >
-                            Amania AI
-                          </span>
-                          <span className="text-[10px] text-gray-400 tracking-[0.1em] uppercase font-medium mt-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                            (Agricultural AI)
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
+                      <div className="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-bold text-lg shadow-[0_0_15px_rgba(56,189,248,0.35)]">
+                        ⬇️
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-base font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-200 to-sky-400 leading-tight">
+                          Chrome Extension (.ZIP)
+                        </span>
+                        <span className="text-[11px] text-gray-400 tracking-[0.08em] uppercase font-medium mt-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          (Voice & Autonomous Webcmd Agent)
+                        </span>
+                      </div>
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -234,26 +209,49 @@ function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center pt-24 pb-10 px-6 gap-10"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center pt-24 pb-10 px-6 gap-8"
           >
-            <a 
-              href="https://bloomsense.co.in" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-3xl font-light tracking-wide text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              BloomSense
-            </a>
             <button 
-              onClick={() => { setCurrentPage('farmer'); setIsMobileMenuOpen(false); window.scrollTo(0,0); }} 
-              className="text-3xl font-light tracking-wide text-white"
+              onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="text-2xl font-light tracking-wide text-white"
             >
-              AI Interfaces
+              Home
+            </button>
+            <button 
+              onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' }); }}
+              className="text-2xl font-light tracking-wide text-white"
+            >
+              Problem
+            </button>
+            <button 
+              onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 1.6, behavior: 'smooth' }); }}
+              className="text-2xl font-light tracking-wide text-white"
+            >
+              4-Layer Loop
+            </button>
+            <button 
+              onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 2.4, behavior: 'smooth' }); }}
+              className="text-2xl font-light tracking-wide text-white"
+            >
+              Voice Agent
+            </button>
+            <button 
+              onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: window.innerHeight * 3.2, behavior: 'smooth' }); }}
+              className="text-2xl font-light tracking-wide text-white"
+            >
+              Toolkit
             </button>
             <a 
+              href="/slab-agent-extension.zip" 
+              download="slab-agent-extension.zip" 
+              className="text-2xl font-light tracking-wide text-sky-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Chrome Extension (.ZIP)
+            </a>
+            <a 
               href="mailto:mishrac373@gmail.com"
-              className="text-3xl font-light tracking-wide text-white mt-8"
+              className="text-2xl font-light tracking-wide text-gray-400 mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
@@ -290,7 +288,7 @@ function App() {
           animate={{ clipPath: 'inset(-20% -10% -20% -10%)', opacity: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          One Core Ecosystem.<br className="hidden md:block"/> Endless Ways to Bloom.
+          One Neural Canvas.<br className="hidden md:block"/> Endless Worlds to Explore.
         </motion.h1>
 
         {/* Sparkles Divider */}
@@ -321,7 +319,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: 'easeOut' }}
         >
-          Neural Leaf is the central engine for next-generation intelligence. By bridging the gap between advanced neural architecture and real-world diagnostics, we power a connected network of specialized ecosystems—from precision agriculture and human health to real-time analytics. We don't just build software; we engineer platforms that grow.
+          Intelligent autonomous agents that explore websites, learn workflows, and execute deterministic browser tasks with voice navigation and <strong>98% token reduction</strong>.
         </motion.p>
       </div>
       </section>
@@ -366,9 +364,9 @@ function App() {
               className="space-y-4 md:space-y-12 pointer-events-auto"
             >
               {[
-                { title: 'Thinks.', desc: 'processes in real time' },
-                { title: 'Adapts.', desc: 'learns from every input' },
-                { title: 'Decides.', desc: 'without human delay' }
+                { title: 'Explores.', desc: 'sandboxed playwright DOM sessions' },
+                { title: 'Learns.', desc: 'endpoint graphs & auth memory' },
+                { title: 'Automates.', desc: 'sub-second CLI execution' }
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -400,12 +398,13 @@ function App() {
                 <div className="mt-3">
                   <AnimatedTextCycle 
                     words={[
-                      "Agriculture.",
-                      "Healthcare.",
-                      "Communication."
+                      "Browser Automation.",
+                      "Voice Navigation.",
+                      "Token Reduction.",
+                      "Self-Learning Agents."
                     ]}
-                    interval={3000}
-                    className="pb-3 pr-2 font-semibold italic bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500 drop-shadow-lg" 
+                    interval={2800}
+                    className="pb-3 pr-2 font-semibold italic bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-300 to-teal-400 drop-shadow-lg" 
                   />
                 </div>
               </h2>
@@ -414,7 +413,7 @@ function App() {
         </div>
       </section>
 
-      {/* Shared starfield backdrop for sections 3 & 4 — ONE canvas instead of two */}
+      {/* Shared starfield backdrop for SLAB sections 3, 4, 5, 6, 7 */}
       <div className="cv-auto relative bg-black">
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <SparklesCore
@@ -422,24 +421,30 @@ function App() {
             background="transparent"
             minSize={0.5}
             maxSize={1.5}
-            particleDensity={50}
+            particleDensity={40}
             className="w-full h-full"
             particleColor="#FFFFFF"
             isStatic={true}
           />
         </div>
 
-        {/* Third Section: Professional Black with Sparkling Crystals */}
-        <section className="relative w-full min-h-screen bg-transparent flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
-          <BloomSenseFeatures />
-        </section>
+        {/* Section 3: Problem Statement */}
+        <SlabProblem />
 
-        {/* Fourth Section: x-ARM1.0 AI Interface */}
-        <XArmSection />
+        {/* Section 4: 4-Layer Architecture */}
+        <SlabArchitecture />
 
+        {/* Section 5: Live Voice Browser Agent Arena */}
+        <SlabVoiceAgent />
+
+        {/* Section 6: Developer Toolkit */}
+        <SlabToolkit />
+
+        {/* Section 7: Chrome Extension & MCP */}
+        <SlabExtension />
       </div>
 
-      {/* Fifth Section: Aurora Hero Ending */}
+      {/* Last Section of Old Website: Aurora Hero Ending */}
       <AuroraHero />
           </motion.div>
         ) : currentPage === 'farmer' ? (
@@ -451,20 +456,7 @@ function App() {
             transition={{ duration: 0.5 }}
             className="relative w-full min-h-screen bg-black flex flex-col items-center pt-32 pb-24 overflow-hidden"
           >
-            {/* Full-screen Sparkles Background */}
-            <div className="absolute inset-0 z-0 w-full h-full">
-              <SparklesCore
-                id="tsparticles-farmer"
-                background="transparent"
-                minSize={0.5}
-                maxSize={1.5}
-                particleDensity={150}
-                className="w-full h-full"
-                particleColor="#FFFFFF"
-              />
-            </div>
-            
-            <WhyChooseBloomSense />
+            <SlabVoiceAgent />
           </motion.div>
         ) : currentPage === 'privacy' ? (
           <PrivacyPolicy key="privacy" />
@@ -473,17 +465,17 @@ function App() {
         ) : null}
       </AnimatePresence>
 
-      {/* Footer / Bottom Header */}
+      {/* Footer */}
       <footer className="w-full bg-[#020617] border-t border-white/10 py-8 flex flex-col items-center justify-center text-neutral-400">
         <div className="flex items-center gap-3 mb-4">
           <div className="h-8 w-8 rounded-full overflow-hidden flex items-center justify-center">
             <img src="/images.jpeg" alt="Logo" className="h-full w-full object-cover" />
           </div>
           <span className="text-xl tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <span className="font-semibold">Neural</span> <span className="font-light">Leaf</span>
+            <span className="font-bold">Neural</span> <span className="font-light text-cyan-400">Agent</span>
           </span>
         </div>
-        <p className="text-sm font-light">© 2026 Neural Leaf Ecosystem. All rights reserved.</p>
+        <p className="text-sm font-light">© 2026 SLAB Webcmd VSSUT. Autonomous AI Browser Agents.</p>
         <div className="flex gap-6 mt-4 text-xs tracking-wider uppercase">
           <button onClick={() => { setCurrentPage('privacy'); window.scrollTo(0,0); }} className="hover:text-white transition-colors uppercase tracking-wider">Privacy Policy</button>
           <button onClick={() => { setCurrentPage('terms'); window.scrollTo(0,0); }} className="hover:text-white transition-colors uppercase tracking-wider">Terms of Service</button>
