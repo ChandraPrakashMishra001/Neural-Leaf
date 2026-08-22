@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Maximize2, Minimize2, Sparkles, Cpu } from "lucide-react";
+import { Maximize2, Minimize2, Sparkles, Cpu } from "lucide-react";
 
 export default function NeuralAiPreview() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,10 +13,10 @@ export default function NeuralAiPreview() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono mb-3 shadow-[0_0_20px_rgba(56,189,248,0.2)]"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-purple-500/15 border border-cyan-400/40 text-cyan-300 text-xs font-mono mb-3 shadow-[0_0_25px_rgba(56,189,248,0.25)]"
         >
-          <Cpu size={14} className="animate-spin text-cyan-400" />
-          <span className="font-bold tracking-widest uppercase">Live Neural Agent</span>
+          <Sparkles size={14} className="text-cyan-400 animate-pulse" />
+          <span className="font-bold tracking-widest uppercase">Powered by Gemini 3.5 Flash</span>
         </motion.div>
         
         <motion.h2 
@@ -37,7 +37,7 @@ export default function NeuralAiPreview() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mt-3"
         >
-          Direct conversational intelligence and autonomous execution powered by Neural Core.
+          Direct conversational intelligence and real-time reasoning powered by <strong className="text-cyan-400 font-semibold">Gemini 3.5 Flash</strong>.
         </motion.p>
       </div>
 
@@ -57,7 +57,7 @@ export default function NeuralAiPreview() {
             <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
             <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
             <span className="text-xs font-mono text-gray-400 ml-2 hidden sm:inline-block">
-              neural-leafv1.lovable.app
+              x-ARM 1.0 · Gemini 3.5 Flash Core
             </span>
           </div>
 
@@ -69,21 +69,12 @@ export default function NeuralAiPreview() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-cyan-400 transition-all text-xs flex items-center gap-1"
-              title={isExpanded ? "Minimize" : "Expand"}
+              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-cyan-400 transition-all text-xs flex items-center gap-1.5"
+              title={isExpanded ? "Minimize" : "Expand to Full Space"}
             >
               {isExpanded ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
-              <span className="hidden sm:inline">{isExpanded ? "Minimize" : "Full Space"}</span>
+              <span>{isExpanded ? "Minimize" : "Full Space"}</span>
             </button>
-            <a
-              href={appUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all flex items-center gap-1.5"
-            >
-              <span>Open App</span>
-              <ExternalLink size={12} />
-            </a>
           </div>
         </div>
 
