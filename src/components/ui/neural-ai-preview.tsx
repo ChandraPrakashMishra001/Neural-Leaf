@@ -1,13 +1,25 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { Maximize2, Minimize2, Sparkles, Cpu } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { Maximize2, Minimize2, Sparkles, Cpu, Play } from "lucide-react";
 
 export default function NeuralAiPreview() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-150px" });
   const appUrl = "https://neural-leafv1.lovable.app";
 
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView]);
+
   return (
-    <section id="ai-section" className="relative w-full max-w-7xl mx-auto px-6 py-28 z-10 border-t border-white/5">
+    <section id="ai-section" ref={sectionRef} className="relative w-full max-w-7xl mx-auto px-6 py-28 z-10 border-t border-white/5">
       <div className="text-center mb-12">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -78,15 +90,34 @@ export default function NeuralAiPreview() {
           </div>
         </div>
 
-        {/* Live App Frame */}
-        <div className="w-full h-[calc(100%-3.5rem)] relative bg-black">
-          <iframe
-            src={appUrl}
-            title="x-ARM 1.0 AI"
-            className="w-full h-full border-0"
-            allow="camera; microphone; clipboard-write; autoplay; fullscreen"
-            loading="lazy"
-          />
+        {/* Live App Frame / Lazy Mount Container */}
+        <div className="w-full h-[calc(100%-3.5rem)] relative bg-black flex items-center justify-center">
+          {isLoaded ? (
+            <iframe
+              src={appUrl}
+              title="x-ARM 1.0 AI"
+              tabIndex={-1}
+              className="w-full h-full border-0"
+              allow="camera; microphone; clipboard-write; autoplay; fullscreen"
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-4 text-center p-8">
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_30px_rgba(56,189,248,0.3)]">
+                <Cpu size={32} className="animate-spin" />
+              </div>
+              <h3 className="text-xl font-bold text-white">x-ARM 1.0 AI Session</h3>
+              <p className="text-xs text-gray-400 max-w-sm">
+                Powered by Gemini 3.5 Flash. Scroll here to activate the interactive live session.
+              </p>
+              <button
+                onClick={() => setIsLoaded(true)}
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs flex items-center gap-2 hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all"
+              >
+                <Play size={14} />
+                <span>Initialize AI Now</span>
+              </button>
+            </div>
+          )}
         </div>
       </motion.div>
     </section>

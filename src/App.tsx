@@ -36,6 +36,13 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
+  useEffect(() => {
     if (window.innerWidth < 768) return;
 
     const lenis = new Lenis();
