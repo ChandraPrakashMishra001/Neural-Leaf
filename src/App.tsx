@@ -315,13 +315,31 @@ function App() {
 
         {/* Paragraph */}
         <motion.p 
-          className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: 'easeOut' }}
         >
           Intelligent autonomous agents that explore websites, learn workflows, and execute deterministic browser tasks with voice navigation and <strong>98% token reduction</strong>.
         </motion.p>
+
+        {/* SLAB Branding */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.1, ease: 'easeOut' }}
+          className="flex flex-col items-center justify-center mt-2"
+        >
+          <span 
+            className="text-2xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-indigo-400 tracking-[0.45em] uppercase font-mono pl-3"
+            style={{ fontFamily: "'Space Grotesk', monospace" }}
+          >
+            S &nbsp;L &nbsp;A &nbsp;B
+          </span>
+          <span className="text-xs sm:text-sm font-medium tracking-[0.25em] text-neutral-400 uppercase mt-2">
+            Self Learning Agent Browser
+          </span>
+        </motion.div>
       </div>
       </section>
 
